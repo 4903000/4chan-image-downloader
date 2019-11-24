@@ -13,7 +13,7 @@
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @require      https://raw.githubusercontent.com/Stuk/jszip/master/dist/jszip.min.js
 // @require      https://raw.githubusercontent.com/Stuk/jszip-utils/master/dist/jszip-utils.min.js
-// @require      https://raw.githubusercontent.com/eligrey/FileSaver.js/master/FileSaver.min.js
+// @require      https://raw.githubusercontent.com/eligrey/FileSaver.js/master/dist/FileSaver.min.js
 // @grant        GM_xmlhttpRequest
 // ==/UserScript==
 
