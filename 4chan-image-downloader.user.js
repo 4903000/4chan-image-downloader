@@ -8,6 +8,8 @@
 // @author       yeriomin
 // @match        http://boards.4chan.org/*/thread/*
 // @match        https://boards.4chan.org/*/thread/*
+// @match        http://boards.4channel.org/*/thread/*
+// @match        https://boards.4channel.org/*/thread/*
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @require      https://raw.githubusercontent.com/Stuk/jszip/master/dist/jszip.min.js
 // @require      https://raw.githubusercontent.com/Stuk/jszip-utils/master/dist/jszip-utils.min.js
