@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         4chan Thread Image Downloader
 // @namespace    https://github.com/yeriomin
-// @downloadURL  https://raw.githubusercontent.com/yeriomin/4chan-image-downloader/master/4chan-image-downloader.js
-// @updateURL    https://raw.githubusercontent.com/yeriomin/4chan-image-downloader/master/4chan-image-downloader.js
-// @version      1.0
+// @downloadURL  https://raw.githubusercontent.com/SpectrumVoid/4chan-image-downloader/master/4chan-image-downloader.user.js
+// @updateURL    https://raw.githubusercontent.com/SpectrumVoid/4chan-image-downloader/master/4chan-image-downloader.user.js
+// @version      1.0.1
 // @description  Downloads all images in a thread or the images of the highlighted poster packs them into an archive and presents to the user
 // @author       yeriomin
 // @match        http://boards.4chan.org/*/thread/*
