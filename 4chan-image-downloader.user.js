@@ -61,7 +61,7 @@
      *
      */
     function displayStatus(statusText) {
-        document.getElementsByClassName('navLinks desktop').item(0).lastChild.innerHTML = statusText;
+        document.getElementById("download-images").innerHTML = statusText;
     }
 
     /**
@@ -112,7 +112,7 @@
             if (highlightedPosterId != '' && currentPosterId != highlightedPosterId) {
                 continue;
             }
-            var fileTextElements = post.getElementsByClassName('fileText');
+            var fileTextElements = post.getElementsByClassName('fileText-original');
             if (fileTextElements.length < 1) {
                 continue;
             }
@@ -120,7 +120,7 @@
             var imageUrl = aElement.getAttribute('href');
             var fileName = aElement.hasAttribute('title') ? aElement.getAttribute('title') : aElement.firstChild.nodeValue;
             fileName = imageUrl.substring(imageUrl.lastIndexOf('/') + 1, imageUrl.lastIndexOf('.')) + '-' + fileName;
-            imageUrls[fileName] = 'http:' + imageUrl;
+            imageUrls[fileName] = imageUrl;
         }
         return imageUrls;
     }
