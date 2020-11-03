@@ -10,6 +10,8 @@
 // @match        https://boards.4chan.org/*/thread/*
 // @match        http://boards.4channel.org/*/thread/*
 // @match        https://boards.4channel.org/*/thread/*
+// @match        http://archive.nyafuu.org/*/thread/*
+// @match        https://archive.nyafuu.org/*/thread/*
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @require      https://raw.githubusercontent.com/Stuk/jszip/master/dist/jszip.min.js
 // @require      https://raw.githubusercontent.com/Stuk/jszip-utils/master/dist/jszip-utils.min.js
@@ -22,7 +24,8 @@
     var isRunning = false;
     
     // Adding "Get images" button to top bar
-    var linksBars = document.getElementsByClassName('navLinks desktop');
+    var linksBars = document.getElementsByClassName('navLinks desktop')
+	|| document.getElementsByClassName('post_controls');
     if (linksBars.length == 0) {
         return false;
     }
@@ -112,11 +115,13 @@
             if (highlightedPosterId != '' && currentPosterId != highlightedPosterId) {
                 continue;
             }
-            var fileTextElements = post.getElementsByClassName('fileText-original');
+            var fileTextElements = post.getElementsByClassName('fileText-original')
+		|| post.getElementsByClassName('post_file');
             if (fileTextElements.length < 1) {
                 continue;
             }
-            var aElement = fileTextElements.item(0).getElementsByTagName('a').item(0);
+            var aElement =  fileTextElements.item(0).getElementsByClassName('post_file_filename').item(0)
+		|| fileTextElements.item(0).getElementsByTagName('a').item(0);
             var imageUrl = aElement.getAttribute('href');
             var fileName = aElement.hasAttribute('title') ? aElement.getAttribute('title') : aElement.firstChild.nodeValue;
             fileName = imageUrl.substring(imageUrl.lastIndexOf('/') + 1, imageUrl.lastIndexOf('.')) + '-' + fileName;
@@ -132,7 +137,7 @@
     function getAllImages(imageUrls, posterId) {
         var fileNames = {}, images = {}, complete = 0, total = Object.keys(imageUrls).length;        
         for (var fileName in imageUrls) {
-            fileNames[imageUrls[fileName]] = fileName;
+            fileNames[imageUrls[fileName].replace(/^.*\/\/[^\/]+/, '')] = fileName;
         }
         for (var fileName in imageUrls) {
             GM_xmlhttpRequest({
@@ -140,7 +145,7 @@
                 url: imageUrls[fileName],
                 responseType: "arraybuffer",
                 onload: function(response) {
-                    var currentFileName = fileNames[response.finalUrl];
+                    var currentFileName = fileNames[response.finalUrl.replace(/^.*\/\/[^\/]+/, '')];
                     images[currentFileName] = JSZipUtils._getBinaryFromXHR(response);
                     complete++;
                     var statusText = complete + ' of ' + total + ' files downloaded';
