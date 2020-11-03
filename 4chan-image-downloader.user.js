@@ -166,12 +166,12 @@
         for (var fileName in images) {
             zip.file(fileName, images[fileName], {binary : true});
         }
-      	var zipFileName = getThreadTitle() + (posterId == '' ? '' : '-' + posterId) + '.zip';
-	      zip.generateAsync({type: "blob"})
-	        .then(function (blob) {;
+        var zipFileName = getThreadTitle() + (posterId == '' ? '' : '-' + posterId) + '.zip';
+              zip.generateAsync({type: "blob"})
+                .then(function (blob) {;
             displayStatus('Get images');
-	          saveAs(blob, zipFileName);
-	      });
+                  saveAs(blob, zipFileName);
+              });
     }
 
 })();
